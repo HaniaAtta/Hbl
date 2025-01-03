@@ -156,7 +156,7 @@ if 'Time' in data.columns:
         data.set_index('Time', inplace=True)
         time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
         if not time_series.empty:
-            fig6, ax6 = plt.subplots(figsize=4, 2)  # Smaller plot size
+            fig6, ax6 = plt.subplots(figsize=(4, 2))  # Smaller plot size
             ax6.plot(time_series['Time'], time_series['Credit'], label='Credit', color=colors['dark_blue'])
             ax6.plot(time_series['Time'], time_series['Debit'], label='Debit', color=colors['slate_blue'])
             ax6.set_title("Transaction Trends Over Time")
