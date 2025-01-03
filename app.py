@@ -70,8 +70,8 @@ colors = {
     'light_beige': '#E7E8D1',
     'dark_slate': '#A7BEAE'
 }
-width = st.sidebar.slider("plot width", 1, 25, 3)
-height = st.sidebar.slider("plot height", 1, 25, 1)
+width = st.sidebar.slider("plot width", 1, 18, 2)
+height = st.sidebar.slider("plot height", 1, 18, 0)
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
@@ -156,7 +156,7 @@ if 'Time' in data.columns:
         data.set_index('Time', inplace=True)
         time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
         if not time_series.empty:
-            fig6, ax6 = plt.subplots(figsize=4, 2))  # Smaller plot size
+            fig6, ax6 = plt.subplots(figsize=4, 2)  # Smaller plot size
             ax6.plot(time_series['Time'], time_series['Credit'], label='Credit', color=colors['dark_blue'])
             ax6.plot(time_series['Time'], time_series['Debit'], label='Debit', color=colors['slate_blue'])
             ax6.set_title("Transaction Trends Over Time")
