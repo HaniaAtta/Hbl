@@ -54,19 +54,8 @@ fig1, ax1 = plt.subplots(figsize=(8, 6))
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax1.set_title('Distribution of Account Types')
-set_plot_background(ax1)  # Set background color for the plot
+set_plot_background(ax1) 
 
-# Center the pie chart using HTML
-st.markdown(
-    f"""
-    <div style="display: flex; justify-content: center;">
-        {plt_to_html(fig1)}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# Explanation
 st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
          "It shows the proportion of each account type, helping to identify which types are most common. "
          "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.")
