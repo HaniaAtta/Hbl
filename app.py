@@ -74,13 +74,11 @@ colors = {
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(3, 1))  # Smaller plot size
+fig1, ax1 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']],
-         textprops={'fontsize': 5})  # Adjust label font size here
-ax1.set_title('Distribution of Account Types', fontsize=8)  # Adjust title font size
-
-
+         textprops={'fontsize': 8})  # Adjust label font size here
+ax1.set_title('Distribution of Account Types', fontsize=10)  # Adjust title font size
 
 # Display the pie chart
 st.pyplot(fig1)
@@ -94,22 +92,23 @@ st.write("**Explanation:** This pie chart illustrates the distribution of differ
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
-fig2, ax2 = plt.subplots(figsize=(6, 3))  # Smaller plot size
+fig2, ax2 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
 sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
             palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
-ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region')
-ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45)
+ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region', fontsize=10)
+ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=8)
 
 st.pyplot(fig2)
-st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
+st.write(" **Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
 "It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.")
 
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
-transaction_intensity = data.groupby('Region')[['Credit', 'Debit'] ].sum().reset_index()
-fig3, ax3 = plt.subplots(figsize=(6, 3))  # Smaller plot size
-sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3)
-ax3.set_title('Transaction Intensity by Region')
+transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
+fig3, ax3 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
+sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3,
+            cbar_kws={'label': 'Transaction Amount'})
+ax3.set_title('Transaction Intensity by Region', fontsize=10)
 
 st.pyplot(fig3)
 st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
@@ -119,28 +118,28 @@ st.subheader("Task 4: Anomalies in Credit Transactions")
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
 outliers_credit = data[data['Credit_Z'].abs() > 3]
-fig4, ax4 = plt.subplots(figsize=(6, 3))  # Smaller plot size
+fig4, ax4 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
 ax4.scatter(data.index, data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
 ax4.scatter(outliers_credit.index, outliers_credit['Credit'], color='red', label='Outliers (Credit)', alpha=0.7)
-ax4.set_title('Anomalies in Credit Transactions')
-ax4.set_xlabel('Index')
-ax4.set_ylabel('Credit Amount')
-ax4.legend()
+ax4.set_title('Anomalies in Credit Transactions', fontsize=10)
+ax4.set_xlabel('Index', fontsize=8)
+ax4.set_ylabel('Credit Amount', fontsize=8)
+ax4.legend(fontsize=8)
 
 st.pyplot(fig4)
 st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.")
 
 # Task 5: Comparative Analysis of Transaction Types
 st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
-fig5, ax5 = plt.subplots(figsize=(6, 3))  # Smaller plot size
+fig5, ax5 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
 sns.boxplot(
     data=data.melt(id_vars='Account Type', value_vars=['Credit', 'Debit']),
     x='Account Type', y='value', hue='variable', ax=ax5, palette=[colors['dark_blue'], colors['slate_blue']]
 )
-ax5.set_title('Comparative Analysis of Credit and Debit Transactions by Account Type')
-ax5.set_xlabel('Account Type')
-ax5.set_ylabel('Transaction Amount')
-ax5.legend(title='Transaction Type')
+ax5.set_title('Comparative Analysis of Credit and Debit Transactions by Account Type', fontsize=10)
+ax5.set_xlabel('Account Type', fontsize=8)
+ax5.set_ylabel('Transaction Amount', fontsize=8)
+ax5.legend(title='Transaction Type', fontsize=8)
 
 st.pyplot(fig5)
 st.write("**Explanation:** This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.")
@@ -155,13 +154,13 @@ if 'Time' in data.columns:
         data.set_index('Time', inplace=True)
         time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
         if not time_series.empty:
-            fig6, ax6 = plt.subplots(figsize=(6, 3))  # Smaller plot size
+            fig6, ax6 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
             ax6.plot(time_series['Time'], time_series['Credit'], label='Credit', color=colors['dark_blue'])
             ax6.plot(time_series['Time'], time_series['Debit'], label='Debit', color=colors['slate_blue'])
-            ax6.set_title("Transaction Trends Over Time")
-            ax6.set_xlabel("Time")
-            ax6.set_ylabel("Transaction Amount")
-            ax6.legend()
+            ax6.set_title("Transaction Trends Over Time", fontsize=10)
+            ax6.set_xlabel("Time", fontsize=8)
+            ax6.set_ylabel("Transaction Amount", fontsize=8)
+            ax6.legend(fontsize=8)
            
             st.pyplot(fig6)
         else:
@@ -171,17 +170,17 @@ if 'Time' in data.columns:
 else:
     st.write("The 'Time' column is not available in the dataset.")
 
-st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.")
+st.write("** Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.")
 
 # Task 7: Total Credit and Debit Amounts by Account Type
 st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
 customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
-fig7, ax7 = plt.subplots(figsize=(6, 3 ))  # Smaller plot size
+fig7, ax7 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
 customer_transactions.set_index('Account Type').plot(kind='bar', stacked=True, ax=ax7, color=[colors['dark_blue'], colors['slate_blue']])
-ax7.set_title('Total Credit and Debit Amounts by Account Type')
-ax7.set_xlabel('Account Type')
-ax7.set_ylabel('Transaction Amount')
-ax7.legend(title='Transaction Type')
+ax7.set_title('Total Credit and Debit Amounts by Account Type', fontsize=10)
+ax7.set_xlabel('Account Type', fontsize=8)
+ax7.set_ylabel('Transaction Amount', fontsize=8)
+ax7.legend(title='Transaction Type', fontsize=8)
 
 st.pyplot(fig7)
 st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
