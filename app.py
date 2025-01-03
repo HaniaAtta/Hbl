@@ -221,14 +221,12 @@ if not numeric_data.empty:
 else:
     st.write("No numeric data available for correlation analysis.")
 
-st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Transaction Volume by Time of Day</h2>", unsafe_allow_html=True)
-if 'Time' in data.columns:
-    data['Hour'] = data['Time'].dt.hour
-    hourly_transactions = data.groupby('Hour')[['Credit', 'Debit']].sum()
-    fig10, ax10 = plt.subplots(figsize=(width, height))
-    hourly_transactions.plot(kind='bar', stacked=True, ax=ax10, color=[colors['dark_blue'], colors['slate_blue']])
-    ax10.set_title('Transaction Volume by Time of Day', fontsize=title_font_size)
-    ax10.set_xlabel('Hour of Day', fontsize=label_font_size)
-    ax10.set_ylabel('Transaction Amount', fontsize=label_font_size)
-    st.pyplot(fig10)
-    st.write("<p style='font-size: 21px;'>Explanation: This bar chart shows transaction volume by the hour of the day. Identifying peak hours can help optimize resources and better understand user behavior.</p>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Distribution of Transaction Amounts by Account Type</h2>", unsafe_allow_html=True)
+fig9, ax9 = plt.subplots(figsize=(width, height))
+sns.boxplot(data=data, x='Account Type', y='Credit', ax=ax9, palette=[colors['dark_blue'], colors['slate_blue']])
+ax9.set_title('Distribution of Credit Transactions by Account Type', fontsize=title_font_size)
+ax9.set_xlabel('Account Type', fontsize=label_font_size)
+ax9.set_ylabel('Transaction Amount', fontsize=label_font_size)
+st.pyplot(fig9)
+st.write("<p style='font-size: 21px;'>Explanation: This box plot shows the distribution of credit transaction amounts across different account types. It helps identify the variability in transaction amounts and the presence of any outliers.</p>", unsafe_allow_html=True)
+
