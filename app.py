@@ -24,6 +24,12 @@ st.markdown(
     h1, h2, h3 {
         text-align: center;  /* Center headers */
     }
+    .centered-table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -31,7 +37,12 @@ st.markdown(
 
 # Dataset Overview
 st.header("Dataset Overview")
+
+# Center the dataset table
+st.markdown('<div class="centered-table">', unsafe_allow_html=True)
 st.write(data)
+st.markdown('</div>', unsafe_allow_html=True)
+
 st.write(f"Dataset size: {data.size}")
 
 # Define custom colors
@@ -42,9 +53,7 @@ colors = {
     'dark_slate': '#1B2735'
 }
 
-# Function to set plot background color
-def set_plot_background(ax):
-    ax.set_facecolor(colors['light_beige'])  
+
    
 
 # Task 1: Account Type Distribution
