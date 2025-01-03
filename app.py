@@ -11,24 +11,31 @@ data = pd.read_csv("data/Enhanced_Dummy_HBL_Data - Sheet1.csv")
 st.set_page_config(page_title="HBL Data Analysis", layout="wide")
 st.title("HBL Data Analysis Dashboard")
 
-# Set the background color to a milk-like color
+# Set the background color to a milk-like color and custom styles
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    
     .reportview-container {
         background: #e8d8c4;  /* Milk-like color */
+        font-family: 'Roboto', sans-serif;  /* Custom font */
     }
     .sidebar .sidebar-content {
         background: #e8d8c4;  /* Milk-like color for sidebar */
     }
     h1, h2, h3 {
         text-align: center;  /* Center headers */
+        margin: 20px 0;  /* Add spacing */
     }
     .centered-table {
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0 auto;
+    }
+    .plot-container {
+        margin: 20px 0;  /* Add spacing around plots */
     }
     </style>
     """,
@@ -47,23 +54,19 @@ st.write(f"Dataset size: {data.size}")
 
 # Define custom colors
 colors = {
-    'dark_blue': '#0c4160',
+    'dark_blue': '#B85042',
     'slate_blue': '#38495a',
-    'light_beige': '#e8d8c4',
-    'dark_slate': '#1B2735'
+    'light_beige': '#E7E8D1',
+    'dark_slate': '#A7BEAE'
 }
-
-
-   
 
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(8, 6))
+fig1, ax1 = plt.subplots(figsize=(6, 4))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax1.set_title('Distribution of Account Types')
-
 
 # Display the pie chart
 st.pyplot(fig1)
@@ -72,11 +75,12 @@ st.pyplot(fig1)
 st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
          "It shows the proportion of each account type, helping to identify which types are most common. "
          "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.")
+
 # Task 2: Transaction Flow by Beneficiary Bank
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
-fig2, ax2 = plt.subplots(figsize=(12, 6))
+fig2, ax2 = plt.subplots(figsize=(8, 4))  # Smaller plot size
 sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
             palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region')
@@ -88,20 +92,20 @@ st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks w
 
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
-transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
-fig3, ax3 = plt.subplots(figsize=(10, 6))
+transaction_intensity = data.groupby('Region')[['Credit', 'Debit'] ].sum().reset_index()
+fig3, ax3 = plt.subplots(figsize=(8, 4))  # Smaller plot size
 sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3)
 ax3.set_title('Transaction Intensity by Region')
 
 st.pyplot(fig3)
-st.write("**Explanation:** This heatmap visual izes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
+st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
 
 # Task 4: Anomalies in Transactions
 st.subheader("Task 4: Anomalies in Credit Transactions")
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
 outliers_credit = data[data['Credit_Z'].abs() > 3]
-fig4, ax4 = plt.subplots(figsize=(12, 6))
+fig4, ax4 = plt.subplots(figsize=(8, 4))  # Smaller plot size
 ax4.scatter(data.index, data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
 ax4.scatter(outliers_credit.index, outliers_credit['Credit'], color='red', label='Outliers (Credit)', alpha=0.7)
 ax4.set_title('Anomalies in Credit Transactions')
@@ -114,7 +118,7 @@ st.write("**Explanation:** This scatter plot identifies anomalies in credit tran
 
 # Task 5: Comparative Analysis of Transaction Types
 st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
-fig5, ax5 = plt.subplots(figsize=(10, 6))
+fig5, ax5 = plt.subplots(figsize=(8, 4))  # Smaller plot size
 sns.boxplot(
     data=data.melt(id_vars='Account Type', value_vars=['Credit', 'Debit']),
     x='Account Type', y='value', hue='variable', ax=ax5, palette=[colors['dark_blue'], colors['slate_blue']]
@@ -137,7 +141,7 @@ if 'Time' in data.columns:
         data.set_index('Time', inplace=True)
         time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
         if not time_series.empty:
-            fig6, ax6 = plt.subplots(figsize=(12, 6))
+            fig6, ax6 = plt.subplots(figsize=(8, 4))  # Smaller plot size
             ax6.plot(time_series['Time'], time_series['Credit'], label='Credit', color=colors['dark_blue'])
             ax6.plot(time_series['Time'], time_series['Debit'], label='Debit', color=colors['slate_blue'])
             ax6.set_title("Transaction Trends Over Time")
@@ -158,10 +162,10 @@ st.write("**Explanation:** This line plot is intended to illustrate the trends o
 # Task 7: Total Credit and Debit Amounts by Account Type
 st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
 customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
-fig7, ax7 = plt.subplots(figsize=(10, 6))
+fig7, ax7 = plt.subplots(figsize=(8, 4 ))  # Smaller plot size
 customer_transactions.set_index('Account Type').plot(kind='bar', stacked=True, ax=ax7, color=[colors['dark_blue'], colors['slate_blue']])
 ax7.set_title('Total Credit and Debit Amounts by Account Type')
-ax7.set_xlabel('Account Type ')
+ax7.set_xlabel('Account Type')
 ax7.set_ylabel('Transaction Amount')
 ax7.legend(title='Transaction Type')
 
