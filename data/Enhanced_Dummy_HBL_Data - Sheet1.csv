@@ -1,0 +1,89 @@
+Region,Subregion,Area,Branch,Account Type,Transaction To,Credit,Debit
+Lahore,Lahore1,Model Town,MT Branch 1,Current,Mezan,9664016.928,0
+Lahore,Lahore3,Model Town,MT Branch 1,Business,Lahore4,0,1567209.971
+Lahore,Lahore4,Model Town,MT Branch 1,Business,Lahore4,1707974.095,0
+Lahore,Lahore1,Model Town,MT Branch 1,Current,Lahore3,0,4988621.128
+Lahore,Lahore3,Model Town,MT Branch 1,Business,MCB,9955056.656,0
+Lahore,Lahore3,Model Town,MT Branch 2,Business,Lahore1,0,6770043.284
+Lahore,Lahore3,Model Town,MT Branch 2,Current,Lahore1,6095553.843,0
+Lahore,Lahore4,Model Town,MT Branch 2,Current,MCB,0,2865492.862
+Lahore,Lahore2,Model Town,MT Branch 2,Business,Mezan,7939334.025,0
+Lahore,Lahore1,Model Town,MT Branch 2,Current,Askari,0,5586217.418
+Lahore,Lahore2,DHA,DHA Branch 1,Current,Askari,4562549.056,0
+Lahore,Lahore2,DHA,DHA Branch 1,Business,Lahore2,0,2947570.206
+Lahore,Lahore1,DHA,DHA Branch 1,Savings,UBL,2651416.824,0
+Lahore,Lahore3,DHA,DHA Branch 1,Business,Mezan,0,1527800.609
+Lahore,Lahore2,DHA,DHA Branch 1,Current,Lahore4,7367979.495,0
+Lahore,Lahore1,DHA,DHA Branch 1,Current,Standard Chartered,0,6115346.026
+Lahore,Lahore1,DHA,DHA Branch 1,Business,Lahore4,4105426.962,0
+Lahore,Lahore2,DHA,DHA Branch 1,Business,Lahore1,0,7873112.413
+Lahore,Lahore2,DHA,DHA Branch 2,Business,MCB,9389730.357,0
+Lahore,Lahore1,DHA,DHA Branch 2,Business,Askari,0,4624186.344
+Lahore,Lahore1,DHA,DHA Branch 2,Current,UBL,5083213.8,0
+Lahore,Lahore2,DHA,DHA Branch 2,Savings,Lahore2,0,7006431.281
+Lahore,Lahore2,DHA,DHA Branch 2,Savings,MCB,7423493.368,0
+Lahore,Lahore2,DHA,DHA Branch 2,Current,Standard Chartered,6577749.988,0
+Lahore,Lahore3,DHA,DHA Branch 2,Current,Standard Chartered,2090128.542,0
+Lahore,Lahore2,DHA,DHA Branch 2,Current,Alfalah,8248922.266,0
+Lahore,Lahore1,DHA,DHA Branch 2,Savings,Askari,8758621.453,0
+Lahore,Lahore2,DHA,DHA Branch 2,Current,Lahore2,0,8805182.043
+Lahore,Lahore4,Gulberg,Gulberg Branch 1,Savings,MCB,2154900.135,0
+Lahore,Lahore2,Gulberg,Gulberg Branch 1,Business,Standard Chartered,9665810.308,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 1,Business,Askari,6572684.571,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 1,Business,Standard Chartered,5191486.622,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 1,Business,UBL,2775870.258,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 2,Savings,Lahore3,4204791.325,0
+Lahore,Lahore4,Gulberg,Gulberg Branch 2,Current,Mezan,0,9939726.848
+Lahore,Lahore3,Gulberg,Gulberg Branch 2,Business,MCB,2741096.684,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 2,Savings,Lahore1,3506372.591,0
+Lahore,Lahore3,Gulberg,Gulberg Branch 2,Current,MCB,9941490.492,0
+Lahore,Lahore4,Gulberg,Gulberg Branch 2,Business,UBL,6213676.02,0
+Lahore,Lahore4,Gulberg,Gulberg Branch 2,Savings,Lahore1,5674579.445,0
+Karachi,Karachi2,Clifton,Clifton Branch 1,Business,Askari,0,7575488.882
+Karachi,Karachi1,Clifton,Clifton Branch 1,Savings,MCB,3288053.544,0
+Karachi,Karachi1,Clifton,Clifton Branch 1,Savings,Askari,8340772.376,0
+Karachi,Karachi3,Clifton,Clifton Branch 1,Business,MCB,7714748.361,0
+Karachi,Karachi1,Clifton,Clifton Branch 1,Current,Karachi3,6404751.496,0
+Karachi,Karachi3,Clifton,Clifton Branch 1,Savings,Askari,5446764.216,0
+Karachi,Karachi4,Clifton,Clifton Branch 1,Savings,Karachi2,4125839.631,0
+Karachi,Karachi4,Clifton,Clifton Branch 1,Current,Standard Chartered,0,9135987.683
+Karachi,Karachi2,Clifton,Clifton Branch 2,Savings,Alfalah,6622146.612,0
+Karachi,Karachi1,Clifton,Clifton Branch 2,Savings,Standard Chartered,8514482.886,0
+Karachi,Karachi4,Clifton,Clifton Branch 2,Current,MCB,2075052.595,0
+Karachi,Karachi2,Clifton,Clifton Branch 2,Current,Karachi3,4521767.749,0
+Karachi,Karachi1,Clifton,Clifton Branch 2,Business,Karachi3,5240601.705,0
+Karachi,Karachi1,Clifton,Clifton Branch 2,Business,Karachi1,7726644.639,0
+Karachi,Karachi3,Clifton,Clifton Branch 2,Current,Karachi4,0,5909762.983
+Karachi,Karachi3,Saddar,Saddar Branch 1,Savings,Standard Chartered,2594956.299,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Business,Karachi2,9099474.388,0
+Karachi,Karachi2,Saddar,Saddar Branch 1,Current,Mezan,8871369.477,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Savings,Askari,7764711.236,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Business,Karachi2,1251730.449,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Current,Karachi1,9348464.45,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Business,Mezan,7149850.006,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Current,Karachi1,1866278.417,0
+Karachi,Karachi4,Saddar,Saddar Branch 1,Business,Karachi4,5160176.948,0
+Karachi,Karachi2,Saddar,Saddar Branch 1,Current,Standard Chartered,2872281.301,0
+Karachi,Karachi1,Saddar,Saddar Branch 2,Savings,Alfalah,7389613.003,0
+Karachi,Karachi3,Saddar,Saddar Branch 2,Savings,Karachi3,0,5665054.093
+Karachi,Karachi1,Saddar,Saddar Branch 2,Savings,Askari,1459095.203,0
+Karachi,Karachi4,Saddar,Saddar Branch 2,Current,Mezan,1778429.416,0
+Karachi,Karachi4,Saddar,Saddar Branch 2,Business,Alfalah,6702166.686,0
+Karachi,Karachi3,Saddar,Saddar Branch 2,Current,Karachi2,1481067.396,0
+Karachi,Karachi4,Saddar,Saddar Branch 2,Current,Karachi4,5013159.743,0
+Karachi,Karachi4,Saddar,Saddar Branch 2,Current,Karachi4,7802671.623,0
+Karachi,Karachi2,Saddar,Saddar Branch 2,Current,MCB,4810286.448,0
+Karachi,Karachi1,North Nazimabad,Nazimabad Branch 1,Business,Karachi4,2676192.241,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 1,Savings,Karachi4,1390620.43,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 1,Savings,Askari,9454704.849,0
+Karachi,Karachi1,North Nazimabad,Nazimabad Branch 1,Business,MCB,4615921.98,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 1,Savings,Alfalah,9525535.53,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 1,Business,Karachi1,3897370.778,0
+Karachi,Karachi1,North Nazimabad,Nazimabad Branch 1,Business,Karachi1,8441280.776,0
+Karachi,Karachi1,North Nazimabad,Nazimabad Branch 1,Current,Standard Chartered,6565622.099,0
+Karachi,Karachi2,North Nazimabad,Nazimabad Branch 1,Current,Karachi4,3422509.97,0
+Karachi,Karachi2,North Nazimabad,Nazimabad Branch 2,Current,Karachi3,4546101.122,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 2,Current,Askari,0,3528809.699
+Karachi,Karachi4,North Nazimabad,Nazimabad Branch 2,Current,Alfalah,7396254.195,0
+Karachi,Karachi3,North Nazimabad,Nazimabad Branch 2,Business,Karachi3,2961133.223,0
+Karachi,Karachi2,North Nazimabad,Nazimabad Branch 2,Savings,Karachi2,3941933.126,0
