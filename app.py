@@ -81,7 +81,7 @@ label_font_size = st.sidebar.slider("Label Font Size", 2, 20, 6)
 legend_font_size = st.sidebar.slider("Legend Font Size", 2, 20, 6)
 
 # Task 1: Account Type Distribution
-st.markdown("<h2 style='font-size: 38px;'>Task 1: Distribution of Account Types</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 1: Distribution of Account Types</h2>", unsafe_allow_html=True)
 account_type_counts = data['Account Type'].value_counts()
 fig1, ax1 = plt.subplots(figsize=(width, height))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
@@ -96,7 +96,7 @@ st.markdown("<p style='font-size: 21px;'>Explanation: This pie chart illustrates
             "It shows the proportion of each account type, helping to identify which types are most common. "
             "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.</p>", unsafe_allow_html=True)
 # Task 2: Transaction Flow by Beneficiary Bank
-st.markdown("<h2 style='font-size: 28px;'>Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region</h2>", unsafe_allow_html=True)
 
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
@@ -111,7 +111,7 @@ st.write("<p style='font-size: 21px;'>Explanation: This bar chart displays the t
 "It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.</p>", unsafe_allow_html=True)
 
 # Task 3: Geographic Heatmap of Transactions
-st.markdown("<h2 style='font-size: 28px;'>Task 3: Transaction Intensity by Region</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 3: Transaction Intensity by Region</h2>", unsafe_allow_html=True)
 
 
 transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
@@ -127,7 +127,7 @@ st.pyplot(fig3)
 st.write("<p style='font-size: 21px;'>Explanation: This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.</p>", unsafe_allow_html=True)
 
 # Task 4: Anomalies in Transactions
-st.markdown("<h2 style='font-size: 28px;'>Task 4: Anomalies in Credit Transactions</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 4: Anomalies in Credit Transactions</h2>", unsafe_allow_html=True)
 
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
@@ -144,7 +144,7 @@ st.pyplot(fig4)
 st.write("<p style='font-size: 21px;'>Explanation: This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.</p>", unsafe_allow_html=True)
 
 # Task 5: Comparative Analysis of Transaction Types
-st.markdown("<h2 style='font-size: 28px;'>Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type</h2>", unsafe_allow_html=True)
 
 fig5, ax5 = plt.subplots(figsize=(width, height))  # Smaller plot size
 sns.boxplot(
@@ -160,7 +160,7 @@ st.pyplot(fig5)
 st.write("<p style='font-size: 21px;'>Explanation: This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.</p>", unsafe_allow_html=True)
 
 # Task 6: Transaction Trends Over Time
-st.markdown("<h2 style='font-size: 28px;'>Task 6: Time-Based Analysis (if applicable)</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 6: Time-Based Analysis (if applicable)</h2>", unsafe_allow_html=True)
 
 if 'Time' in data.columns:
     st.subheader("Task 6: Transaction Trends Over Time")
@@ -190,7 +190,7 @@ else:
 st.write("<p style='font-size: 21px;'>Explanation: This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.</p>", unsafe_allow_html=True)
 
 # Task 7: Total Credit and Debit Amounts by Account Type
-st.markdown("<h2 style='font-size: 28px;'>Task 7: Total Credit and Debit Amounts by Account Type</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Task 7: Total Credit and Debit Amounts by Account Type</h2>", unsafe_allow_html=True)
 
 customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
 fig7, ax7 = plt.subplots(figsize=(width, height))  # Smaller plot size
