@@ -206,22 +206,19 @@ st.write("<p style='font-size: 21px;'>Explanation: This stacked bar chart visual
          "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.</p>", unsafe_allow_html=True)
 
 
-st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Correlation Heatmap</h2>", unsafe_allow_html=True)
-corr_matrix = data[['Credit', 'Debit', 'Account Type']].corr()
-fig8, ax8 = plt.subplots(figsize=(width, height))
-sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', fmt='.2f', ax=ax8)
-ax8.set_title('Correlation Heatmap', fontsize=title_font_size)
-st.pyplot(fig8)
-st.write("<p style='font-size: 21px;'>Explanation: This heatmap shows the correlation between credit, debit, and account type. A strong correlation between certain features can offer valuable insights, such as understanding if higher credits are associated with certain account types.</p>", unsafe_allow_html=True)
+# Task: Correlation Matrix (if applicable)
+st.markdown("<h2 style='font-size: 40px;'>Correlation Matrix</h2>", unsafe_allow_html=True)
 
+# Ensure only numeric columns are included
+numeric_data = filtered_data[['Credit', 'Debit']].dropna()
 
-st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Distribution of Transaction Amounts by Account Type</h2>", unsafe_allow_html=True)
-fig9, ax9 = plt.subplots(figsize=(width, height))
-sns.boxplot(data=data, x='Account Type', y='Credit', ax=ax9, palette=[colors['dark_blue'], colors['slate_blue']])
-ax9.set_title('Distribution of Credit Transactions by Account Type', fontsize=title_font_size)
-ax9.set_xlabel('Account Type', fontsize=label_font_size)
-ax9.set_ylabel('Transaction Amount', fontsize=label_font_size)
-st.pyplot(fig9)
-st.write("<p style='font-size: 21px;'>Explanation: This box plot shows the distribution of credit transaction amounts across different account types. It helps identify the variability in transaction amounts and the presence of any outliers.</p>", unsafe_allow_html=True)
+if not numeric_data.empty:
+    corr_matrix = numeric_data.corr()
+    fig_corr, ax_corr = plt.subplots(figsize=(width, height))
+    sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', ax=ax_corr)
+    ax_corr.set_title('Correlation Matrix', fontsize=title_font_size)
+    st.pyplot(fig_corr)
+else:
+    st.write("No numeric data available for correlation analysis.")
 
 
