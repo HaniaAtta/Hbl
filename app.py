@@ -81,7 +81,7 @@ label_font_size = st.sidebar.slider("Label Font Size", 2, 20, 6)
 legend_font_size = st.sidebar.slider("Legend Font Size", 2, 20, 6)
 
 # Task 1: Account Type Distribution
-st.markdown("<h2 style='font-size: 28px;'>Task 1: Distribution of Account Types</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 38px;'>Task 1: Distribution of Account Types</h2>", unsafe_allow_html=True)
 account_type_counts = data['Account Type'].value_counts()
 fig1, ax1 = plt.subplots(figsize=(width, height))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
