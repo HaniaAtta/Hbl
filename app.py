@@ -11,10 +11,7 @@ data = pd.read_csv("data/Enhanced_Dummy_HBL_Data - Sheet1.csv")
 st.set_page_config(page_title="HBL Data Analysis", layout="wide")
 st.title("HBL Data Analysis Dashboard")
 
-# Dataset Overview
-st.header("Dataset Overview")
-st.write(data)
-st.write(f"Dataset size: {data.size}")
+# Set the background color to a milk-like color
 st.markdown(
     """
     <style>
@@ -28,6 +25,11 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# Dataset Overview
+st.header("Dataset Overview")
+st.write(data)
+st.write(f"Dataset size: {data.size}")
 
 # Define custom colors
 colors = {
@@ -78,7 +80,7 @@ data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
 outliers_credit = data[data['Credit_Z'].abs() > 3]
 fig4, ax4 = plt.subplots(figsize=(12, 6))
-ax4.scatter(data.index , data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
+ax4.scatter(data.index, data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
 ax4.scatter(outliers_credit.index, outliers_credit['Credit'], color='red', label='Outliers (Credit)', alpha=0.7)
 ax4.set_title('Anomalies in Credit Transactions')
 ax4.set_xlabel('Index')
@@ -140,4 +142,4 @@ ax7.legend(title='Transaction Type')
 st.pyplot(fig7)
 st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
          "It provides a clear comparison of how different account types contribute to overall transaction volumes. "
-         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.")
+         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.") ⬤
