@@ -13,7 +13,7 @@ st.title("HBL Data Analysis Dashboard")
 
 # Set the background color to a milk-like color and custom styles
 st.markdown(
-    """
+     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
     
@@ -24,9 +24,20 @@ st.markdown(
     .sidebar .sidebar-content {
         background: #e8d8c4;  /* Milk-like color for sidebar */
     }
-    h1, h2, h3 {
+    h1 {
         text-align: center;  /* Center headers */
         margin: 20px 0;  /* Add spacing */
+        font-size: 24px;  /* Adjust font size */
+    }
+    h2 {
+        text-align: center;  /* Center subheaders */
+        margin: 20px 0;  /* Add spacing */
+        font-size: 20px;  /* Adjust font size */
+    }
+    h3 {
+        text-align: center;  /* Center sub-subheaders */
+        margin: 20px 0;  /* Add spacing */
+        font-size: 18px;  /* Adjust font size */
     }
     .centered-table {
         display: flex;
@@ -61,7 +72,7 @@ colors = {
 }
 
 # Task 1: Account Type Distribution
-st.subheader("Task 1: Distribution of Account Types", fontsize=16)
+st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
 fig1, ax1 = plt.subplots(figsize=(2, 1))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
