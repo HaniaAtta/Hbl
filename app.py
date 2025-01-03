@@ -74,7 +74,7 @@ colors = {
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
+fig1, ax1 = plt.subplots(figsize=(3, 2))  # Adjusted plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']],
          textprops={'fontsize': 8})  # Adjust label font size here
@@ -92,7 +92,7 @@ st.write("**Explanation:** This pie chart illustrates the distribution of differ
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
-fig2, ax2 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
+fig2, ax2 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
 sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
             palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region', fontsize=10)
