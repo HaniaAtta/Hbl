@@ -70,8 +70,8 @@ colors = {
     'light_beige': '#E7E8D1',
     'dark_slate': '#A7BEAE'
 }
-width = st.sidebar.slider("plot width", 3, 22, 2)
-height = st.sidebar.slider("plot height", 2, 22, 1)
+width = st.sidebar.slider("plot width", 1, 22, 4)
+height = st.sidebar.slider("plot height", 1, 22, 3)
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
@@ -107,14 +107,17 @@ st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks w
 
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
-transaction_intensity = data.groupby('Region')[['Credit', 'Debit'] ].sum().reset_index()
-fig3, ax3 = plt.subplots(figsize=(width,height))  # Smaller plot size
-sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3)
+transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
+
+# Create a custom colormap using the defined colors
+custom_cmap = sns.color_palette([colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
+
+fig3, ax3 = plt.subplots(figsize=(width, height))  # Smaller plot size
+sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap=custom_cmap, fmt='.0f', ax=ax3)
 ax3.set_title('Transaction Intensity by Region')
 
 st.pyplot(fig3)
 st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
-
 # Task 4: Anomalies in Transactions
 st.subheader("Task 4: Anomalies in Credit Transactions")
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
