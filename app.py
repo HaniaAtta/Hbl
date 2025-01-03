@@ -74,11 +74,11 @@ colors = {
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(3, 2))  # Adjusted plot size
-ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
+fig1, ax1 = plt.subplots(figsize=(1, 1))  # Adjusted plot size
+ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=140,
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']],
-         textprops={'fontsize': 8})  # Adjust label font size here
-ax1.set_title('Distribution of Account Types', fontsize=10)  # Adjust title font size
+         textprops={'fontsize': 2})  # Adjust label font size here
+ax1.set_title('Distribution of Account Types', fontsize=4)  # Adjust title font size
 
 # Display the pie chart
 st.pyplot(fig1)
@@ -94,9 +94,10 @@ top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_ind
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
 fig2, ax2 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
 sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
-            palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
-ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region', fontsize=10)
-ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=8)
+            palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']],
+           textprops={'fontsize': 3})
+ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region', fontsize=8)
+ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=6)
 
 st.pyplot(fig2)
 st.write(" **Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
@@ -105,10 +106,10 @@ st.write(" **Explanation:** This bar chart displays the top 5 beneficiary banks 
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
 transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
-fig3, ax3 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
+fig3, ax3 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
 sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3,
             cbar_kws={'label': 'Transaction Amount'})
-ax3.set_title('Transaction Intensity by Region', fontsize=10)
+ax3.set_title('Transaction Intensity by Region', fontsize=8)
 
 st.pyplot(fig3)
 st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
@@ -118,7 +119,7 @@ st.subheader("Task 4: Anomalies in Credit Transactions")
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
 outliers_credit = data[data['Credit_Z'].abs() > 3]
-fig4, ax4 = plt.subplots(figsize=(6, 3))  # Adjusted plot size
+fig4, ax4 = plt.subplots(figsize=(4, 2))  # Adjusted plot size
 ax4.scatter(data.index, data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
 ax4.scatter(outliers_credit.index, outliers_credit['Credit'], color='red', label='Outliers (Credit)', alpha=0.7)
 ax4.set_title('Anomalies in Credit Transactions', fontsize=10)
