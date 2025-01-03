@@ -33,7 +33,8 @@ sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2
 ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region')
 ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45)
 st.pyplot(fig2)
-
+st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
+"It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.")
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
 transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_index()
@@ -41,7 +42,8 @@ fig3, ax3 = plt.subplots(figsize=(10, 6))
 sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3)
 ax3.set_title('Transaction Intensity by Region')
 st.pyplot(fig3)
-
+st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. "
+"The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
 # Task 4: Anomalies in Transactions
 st.subheader("Task 4: Anomalies in Credit Transactions")
 data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std()
@@ -55,7 +57,9 @@ ax4.set_xlabel('Index')
 ax4.set_ylabel('Credit Amount')
 ax4.legend()
 st.pyplot(fig4)
+st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.
 
+")
 # Task 5: Comparative Analysis of Transaction Types
 st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
 fig5, ax5 = plt.subplots(figsize=(10, 6))
@@ -68,7 +72,7 @@ ax5.set_xlabel('Account Type')
 ax5.set_ylabel('Transaction Amount')
 ax5.legend(title='Transaction Type')
 st.pyplot(fig5)
-
+st.write("**Explanation:** This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.")
 # Task 6: Transaction Trends Over Time
 st.subheader("Task 6:Time-Based Analysis (if applicable)")
 if 'Time' in data.columns:
@@ -93,7 +97,9 @@ if 'Time' in data.columns:
         st.write("No valid time data found in the dataset.")
 else:
     st.write("The 'Time' column is not available in the dataset.")
+st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.
 
+")
 # Task 7: Total Credit and Debit Amounts by Account Type
 st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
 customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
@@ -104,3 +110,8 @@ ax7.set_xlabel('Account Type')
 ax7.set_ylabel('Transaction Amount')
 ax7.legend(title='Transaction Type')
 st.pyplot(fig7)
+st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
+         "It shows the proportion of each account type, helping to identify which types are most common. "
+         "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.This stacked bar chart shows the total credit and debit amounts for each account type. It provides a clear comparison of how different account types contribute to overall transaction volumes, which can inform marketing strategies or product offerings. Since the dataset did not include a 'Customer Type Description' column, the 'Account Type' was used as a proxy for customer type in this analysis. This approach allows for insights into the financial behavior of different account segments, even in the absence of explicit customer type data.
+
+")
