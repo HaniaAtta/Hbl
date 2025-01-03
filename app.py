@@ -28,7 +28,8 @@ colors = {
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
 fig1, ax1 = plt.subplots(figsize=(8, 6))
-ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
+ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
+         colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax1.set_title('Distribution of Account Types')
 st.pyplot(fig1)
 st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
@@ -40,7 +41,8 @@ st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions b
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
 fig2, ax2 = plt.subplots(figsize=(12, 6))
-sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, palette=[colors['dark_blue'], colors['slate_blue']])
+sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
+            palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region')
 ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45)
 st.pyplot(fig2)
@@ -63,66 +65,4 @@ data['Credit_Z'] = (data['Credit'] - data['Credit'].mean()) / data['Credit'].std
 data['Debit_Z'] = (data['Debit'] - data['Debit'].mean()) / data['Debit'].std()
 outliers_credit = data[data['Credit_Z'].abs() > 3]
 fig4, ax4 = plt.subplots(figsize=(12, 6))
-ax4.scatter(data.index, data['Credit'], label='Credit', alpha=0.5, color=colors['dark_blue'])
-ax4.scatter(outliers_credit.index, outliers_credit['Credit'], color='red', label='Outliers (Credit)', alpha=0.7)
-ax4.set_title('Anomalies in Credit Transactions')
-ax4.set_xlabel('Index')
-ax4.set_ylabel('Credit Amount')
-ax4.legend()
-st.pyplot(fig4 )
-st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.")
-
-# Task 5: Comparative Analysis of Transaction Types
-st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
-fig5, ax5 = plt.subplots(figsize=(10, 6))
-sns.boxplot(
-    data=data.melt(id_vars='Account Type', value_vars=['Credit', 'Debit']),
-    x='Account Type', y='value', hue='variable', ax=ax5, palette=[colors['dark_blue'], colors['slate_blue']]
-)
-ax5.set_title('Comparative Analysis of Credit and Debit Transactions by Account Type')
-ax5.set_xlabel('Account Type')
-ax5.set_ylabel('Transaction Amount')
-ax5.legend(title='Transaction Type')
-st.pyplot(fig5)
-st.write("**Explanation:** This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.")
-
-# Task 6: Transaction Trends Over Time
-st.subheader("Task 6: Time-Based Analysis (if applicable)")
-if 'Time' in data.columns:
-    st.subheader("Task 6: Transaction Trends Over Time")
-    data['Time'] = pd.to_datetime(data['Time'])
-    data = data.dropna(subset=['Time'])
-    if not data.empty:
-        data.set_index('Time', inplace=True)
-        time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
-        if not time_series.empty:
-            fig6, ax6 = plt.subplots(figsize=(12, 6))
-            ax6.plot(time_series['Time'], time_series['Credit'], label='Credit', color=colors['dark_blue'])
-            ax6.plot(time_series['Time'], time_series['Debit'], label='Debit', color=colors['slate_blue'])
-            ax6.set_title("Transaction Trends Over Time")
-            ax6.set_xlabel("Time")
-            ax6.set_ylabel("Transaction Amount")
-            ax6.legend()
-            st.pyplot(fig6)
-        else:
-            st.write("Time series data is empty after processing.")
-    else:
-        st.write("No valid time data found in the dataset.")
-else:
-    st.write("The 'Time' column is not available in the dataset.")
-
-st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.")
-
-# Task 7: Total Credit and Debit Amounts by Account Type
-st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
-customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
-fig7, ax7 = plt.subplots(figsize=(10, 6))
-customer_transactions.set_index('Account Type').plot(kind='bar', stacked=True, ax=ax7, color=[colors['dark_blue'], colors['slate_blue']])
-ax7.set_title('Total Credit and Debit Amounts by Account Type')
-ax7.set_xlabel('Account Type')
-ax7.set_ylabel('Transaction Amount')
-ax7.legend(title='Transaction Type')
-st.pyplot(fig7)
-st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
-         "It provides a clear comparison of how different account types contribute to overall transaction volumes. "
-         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.")
+ax4.scatter(data.index
