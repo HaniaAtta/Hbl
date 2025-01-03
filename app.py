@@ -61,12 +61,12 @@ colors = {
 }
 
 # Task 1: Account Type Distribution
-st.subheader("Task 1: Distribution of Account Types")
+st.subheader("Task 1: Distribution of Account Types", fontsize=16)
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(4, 2))  # Smaller plot size
+fig1, ax1 = plt.subplots(figsize=(2, 1))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
-ax1.set_title('Distribution of Account Types')
+ax1.set_title('Distribution of Account Types', fontsize=12)
 
 # Display the pie chart
 st.pyplot(fig1)
