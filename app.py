@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load data
-data = pd.read_csv("/mnt/data/Enhanced_Dummy_HBL_Data - Sheet1.csv")
+data = pd.read_csv("data/Enhanced_Dummy_HBL_Data - Sheet1.csv")
 
 st.set_page_config(page_title="HBL Data Analysis", layout="wide")
 st.title("HBL Data Analysis Dashboard")
