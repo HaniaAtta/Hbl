@@ -15,6 +15,19 @@ st.title("HBL Data Analysis Dashboard")
 st.header("Dataset Overview")
 st.write(data)
 st.write(f"Dataset size: {data.size}")
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: #e8d8c4;  /* Milk-like color */
+    }
+    .sidebar .sidebar-content {
+        background: #e8d8c4;  /* Milk-like color for sidebar */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # Define custom colors
 colors = {
