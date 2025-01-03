@@ -32,12 +32,12 @@ st.markdown(
     h2 {
         text-align: center;  /* Center subheaders */
         margin: 20px 0;  /* Add spacing */
-        font-size: 54px;  /* Adjust font size */
+       
     }
     h3 {
         text-align: center;  /* Center sub-subheaders */
         margin: 20px 0;  /* Add spacing */
-        font-size: 34px;  /* Adjust font size */
+       
     }
     .centered-table {
         display: flex;
@@ -76,12 +76,12 @@ width = st.sidebar.slider("Plot Width", 1, 22, 4)
 height = st.sidebar.slider("Plot Height", 1, 22, 3)
 
 # Sliders for font sizes
-title_font_size = st.sidebar.slider("Title Font Size", 8, 30, 8)
-label_font_size = st.sidebar.slider("Label Font Size", 6, 20, 4)
-legend_font_size = st.sidebar.slider("Legend Font Size", 6, 20, 6)
+title_font_size = st.sidebar.slider("Title Font Size", 2, 30, 8)
+label_font_size = st.sidebar.slider("Label Font Size", 2, 20, 6)
+legend_font_size = st.sidebar.slider("Legend Font Size", 2, 20, 6)
 
 # Task 1: Account Type Distribution
-st.subheader("Task 1: Distribution of Account Types")
+st.subheader("<h1 style='font-size: 28px;'>Task 1: Distribution of Account Types</h1>", unsafe_allow_html=True)
 account_type_counts = data['Account Type'].value_counts()
 fig1, ax1 = plt.subplots(figsize=(width, height))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
@@ -92,7 +92,7 @@ ax1.set_title('Distribution of Account Types', fontsize=title_font_size)  # Adju
 # Display the pie chart
 st.pyplot(fig1)
 
-st.markdown("<p style='font-size: 28px;'>**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
+st.markdown("<p style='font-size: 21px;'>Explanation: This pie chart illustrates the distribution of different account types in the dataset. "
             "It shows the proportion of each account type, helping to identify which types are most common. "
             "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.</p>", unsafe_allow_html=True)
 # Task 2: Transaction Flow by Beneficiary Bank
@@ -106,8 +106,8 @@ ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Regio
 ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45, fontsize=label_font_size)
 
 st.pyplot(fig2)
-st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
-"It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.")
+st.write("<p style='font-size: 21px;'>Explanation: This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
+"It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.</p>", unsafe_allow_html=True)
 
 # Task 3: Geographic Heatmap of Transactions
 st.subheader("Task 3: Transaction Intensity by Region")
@@ -121,7 +121,7 @@ sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap=custom_c
 ax3.set_title('Transaction Intensity by Region', fontsize=title_font_size)
 
 st.pyplot(fig3)
-st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
+st.write("<p style='font-size: 21px;'>Explanation: This heatmap visualizes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.</p>", unsafe_allow_html=True)
 
 # Task 4: Anomalies in Transactions
 st.subheader("Task 4: Anomalies in Credit Transactions")
@@ -137,7 +137,7 @@ ax4.set_ylabel('Credit Amount', fontsize=label_font_size)
 ax4.legend(fontsize=legend_font_size)
 
 st.pyplot(fig4)
-st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.")
+st.write("<p style='font-size: 21px;'>Explanation: This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.</p>", unsafe_allow_html=True)
 
 # Task 5: Comparative Analysis of Transaction Types
 st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
@@ -152,7 +152,7 @@ ax5.set_ylabel('Transaction Amount', fontsize=label_font_size)
 ax5.legend(title='Transaction Type', fontsize=legend_font_size)
 
 st.pyplot(fig5)
-st.write("**Explanation:** This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.")
+st.write("<p style='font-size: 21px;'>Explanation: This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.</p>", unsafe_allow_html=True)
 
 # Task 6: Transaction Trends Over Time
 st.subheader("Task 6: Time-Based Analysis (if applicable)")
@@ -181,7 +181,7 @@ if 'Time' in data.columns:
 else:
     st.write("The 'Time' column is not available in the dataset.")
 
-st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.")
+st.write("<p style='font-size: 21px;'>Explanation: This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.</p>", unsafe_allow_html=True)
 
 # Task 7: Total Credit and Debit Amounts by Account Type
 st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
@@ -194,6 +194,6 @@ ax7.set_ylabel('Transaction Amount', fontsize=label_font_size)
 ax7.legend(title='Transaction Type', fontsize=legend_font_size)
 
 st.pyplot(fig7)
-st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
+st.write("<p style='font-size: 21px;'>Explanation: This stacked bar chart visualizes the total credit and debit amounts for each account type. "
          "It provides a clear comparison of how different account types contribute to overall transaction volumes. "
-         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.")
+         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.</p>", unsafe_allow_html=True)
