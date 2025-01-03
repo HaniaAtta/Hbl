@@ -110,8 +110,6 @@ ax7.set_xlabel('Account Type')
 ax7.set_ylabel('Transaction Amount')
 ax7.legend(title='Transaction Type')
 st.pyplot(fig7)
-st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
-         "It shows the proportion of each account type, helping to identify which types are most common. "
-         "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.This stacked bar chart shows the total credit and debit amounts for each account type. It provides a clear comparison of how different account types contribute to overall transaction volumes, which can inform marketing strategies or product offerings. Since the dataset did not include a 'Customer Type Description' column, the 'Account Type' was used as a proxy for customer type in this analysis. This approach allows for insights into the financial behavior of different account segments, even in the absence of explicit customer type data.
-
-")
+st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
+         "It provides a clear comparison of how different account types contribute to overall transaction volumes. "
+         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.")
