@@ -72,13 +72,13 @@ colors = {
 }
 
 # Sliders for plot dimensions
-width = st.sidebar.slider("Plot Width", 1, 22, 2)
-height = st.sidebar.slider("Plot Height", 1, 22, 1)
+width = st.sidebar.slider("Plot Width", 1, 22, 4)
+height = st.sidebar.slider("Plot Height", 1, 22, 3)
 
 # Sliders for font sizes
-title_font_size = st.sidebar.slider("Title Font Size", 8, 30, 10)
-label_font_size = st.sidebar.slider("Label Font Size", 6, 20, 8)
-legend_font_size = st.sidebar.slider("Legend Font Size", 6, 20, 8)
+title_font_size = st.sidebar.slider("Title Font Size", 8, 30, 6)
+label_font_size = st.sidebar.slider("Label Font Size", 6, 20, 3)
+legend_font_size = st.sidebar.slider("Legend Font Size", 6, 20, 4)
 
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
@@ -92,7 +92,7 @@ ax1.set_title('Distribution of Account Types', fontsize=title_font_size)  # Adju
 # Display the pie chart
 st.pyplot(fig1)
 
-st.markdown("<p style='font-size: 14px;'>**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
+st.markdown("<p style='font-size: 43px;'>**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
             "It shows the proportion of each account type, helping to identify which types are most common. "
             "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.</p>", unsafe_allow_html=True)
 # Task 2: Transaction Flow by Beneficiary Bank
