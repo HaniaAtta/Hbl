@@ -210,7 +210,7 @@ st.write("<p style='font-size: 21px;'>Explanation: This stacked bar chart visual
 st.markdown("<h2 style='font-size: 40px;'>Correlation Matrix</h2>", unsafe_allow_html=True)
 
 # Ensure only numeric columns are included
-numeric_data = filtered_data[['Credit', 'Debit']].dropna()
+numeric_data = data[['Credit', 'Debit']].dropna()  # Use 'data' instead of 'filtered_data'
 
 if not numeric_data.empty:
     corr_matrix = numeric_data.corr()
