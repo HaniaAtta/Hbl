@@ -57,9 +57,7 @@ ax4.set_xlabel('Index')
 ax4.set_ylabel('Credit Amount')
 ax4.legend()
 st.pyplot(fig4)
-st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.
-
-")
+st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.")
 # Task 5: Comparative Analysis of Transaction Types
 st.subheader("Task 5: Comparative Analysis of Credit and Debit Transactions by Account Type")
 fig5, ax5 = plt.subplots(figsize=(10, 6))
