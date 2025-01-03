@@ -221,12 +221,17 @@ if not numeric_data.empty:
 else:
     st.write("No numeric data available for correlation analysis.")
 
+# Bonus Task: Distribution of Transaction Amounts by Account Type
 st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Distribution of Transaction Amounts by Account Type</h2>", unsafe_allow_html=True)
+
 fig9, ax9 = plt.subplots(figsize=(width, height))
+# Use the defined colors for the box plot
 sns.boxplot(data=data, x='Account Type', y='Credit', ax=ax9, palette=[colors['dark_blue'], colors['slate_blue']])
 ax9.set_title('Distribution of Credit Transactions by Account Type', fontsize=title_font_size)
 ax9.set_xlabel('Account Type', fontsize=label_font_size)
 ax9.set_ylabel('Transaction Amount', fontsize=label_font_size)
+
+# Display the box plot
 st.pyplot(fig9)
 st.write("<p style='font-size: 21px;'>Explanation: This box plot shows the distribution of credit transaction amounts across different account types. It helps identify the variability in transaction amounts and the presence of any outliers.</p>", unsafe_allow_html=True)
 
