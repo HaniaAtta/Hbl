@@ -97,7 +97,7 @@ st.markdown("<p style='font-size: 14px;'>**Explanation:** This pie chart illustr
             "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.</p>", unsafe_allow_html=True)
 # Task 2: Transaction Flow by Beneficiary Bank
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
-top _banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
+top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
 top_banks = top_banks.sort_values(by='Credit', ascending=False).groupby('Region').head(5)
 fig2, ax2 = plt.subplots(figsize=(width, height))  # Smaller plot size
 sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2, 
