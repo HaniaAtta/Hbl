@@ -207,7 +207,7 @@ st.write("<p style='font-size: 21px;'>Explanation: This stacked bar chart visual
 
 
 # Task: Correlation Matrix (if applicable)
-st.markdown("<h2 style='font-size: 40px;'>Correlation Matrix</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'> BONUS:  Correlation Matrix</h2>", unsafe_allow_html=True)
 
 # Ensure only numeric columns are included
 numeric_data = data[['Credit', 'Debit']].dropna()  # Use 'data' instead of 'filtered_data'
@@ -221,29 +221,14 @@ if not numeric_data.empty:
 else:
     st.write("No numeric data available for correlation analysis.")
 
-
-from sklearn.cluster import KMeans
-
-st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Customer Segmentation</h2>", unsafe_allow_html=True)
-
-# Prepare data for segmentation
-data_segmentation = data[['Credit', 'Debit']].dropna()
-
-# Check if there are enough data points to perform clustering
-if len(data_segmentation) > 0:
-    # Fit KMeans model
-    kmeans = KMeans(n_clusters=3, random_state=42)  # Set random_state for reproducibility
-    data_segmentation['Cluster'] = kmeans.fit_predict(data_segmentation[['Credit', 'Debit']])
-
-    # Create scatter plot for customer segmentation
-    fig11, ax11 = plt.subplots(figsize=(width, height))
-    sns.scatterplot(data=data_segmentation, x='Credit', y='Debit', hue='Cluster', palette='viridis', ax=ax11, legend='full')
-    ax11.set_title('Customer Segmentation Based on Transaction Behavior', fontsize=title_font_size)
-    ax11.set_xlabel('Credit Amount', fontsize=label_font_size)
-    ax11.set_ylabel('Debit Amount', fontsize=label_font_size)
-
-    # Display the plot
-    st.pyplot(fig11)
-    st.write("<p style='font-size: 21px;'>Explanation: This scatter plot visualizes customer segmentation based on their credit and debit transactions. Clustering can reveal different customer behavior patterns, such as high-value or frequent transactors.</p>", unsafe_allow_html=True)
-else:
-    st.write("<p style='font-size: 21px;'>No data available for segmentation.</p>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 40px;'>Bonus Task: Transaction Volume by Time of Day</h2>", unsafe_allow_html=True)
+if 'Time' in data.columns:
+    data['Hour'] = data['Time'].dt.hour
+    hourly_transactions = data.groupby('Hour')[['Credit', 'Debit']].sum()
+    fig10, ax10 = plt.subplots(figsize=(width, height))
+    hourly_transactions.plot(kind='bar', stacked=True, ax=ax10, color=[colors['dark_blue'], colors['slate_blue']])
+    ax10.set_title('Transaction Volume by Time of Day', fontsize=title_font_size)
+    ax10.set_xlabel('Hour of Day', fontsize=label_font_size)
+    ax10.set_ylabel('Transaction Amount', fontsize=label_font_size)
+    st.pyplot(fig10)
+    st.write("<p style='font-size: 21px;'>Explanation: This bar chart shows transaction volume by the hour of the day. Identifying peak hours can help optimize resources and better understand user behavior.</p>", unsafe_allow_html=True)
