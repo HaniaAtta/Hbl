@@ -70,8 +70,8 @@ colors = {
     'light_beige': '#E7E8D1',
     'dark_slate': '#A7BEAE'
 }
-width = st.sidebar.slider("plot width", 1, 22, 2)
-height = st.sidebar.slider("plot height", 1, 22, 1)
+width = st.sidebar.slider("plot width", 3, 22, 2)
+height = st.sidebar.slider("plot height", 2, 22, 1)
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
