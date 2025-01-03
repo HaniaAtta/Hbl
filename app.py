@@ -92,11 +92,9 @@ ax1.set_title('Distribution of Account Types', fontsize=title_font_size)  # Adju
 # Display the pie chart
 st.pyplot(fig1)
 
-# Explanation
-st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
-         "It shows the proportion of each account type, helping to identify which types are most common. "
-         "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.",fontsize=14px)
-
+st.markdown("<p style='font-size: 14px;'>**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
+            "It shows the proportion of each account type, helping to identify which types are most common. "
+            "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.</p>", unsafe_allow_html=True)
 # Task 2: Transaction Flow by Beneficiary Bank
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
 top _banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
