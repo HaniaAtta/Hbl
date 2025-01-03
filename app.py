@@ -161,7 +161,7 @@ if 'Time' in data.columns:
     data['Time'] = pd.to_datetime(data['Time'])
     data = data.dropna(subset=['Time'])
     if not data.empty:
-        data.set_index('Time', inplace ```python
+ 
         data.set_index('Time', inplace=True)
         time_series = data.resample('D')[['Credit', 'Debit']].sum().reset_index()
         if not time_series.empty:
