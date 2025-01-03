@@ -74,7 +74,7 @@ colors = {
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
-fig1, ax1 = plt.subplots(figsize=(1, 2))  # Smaller plot size
+fig1, ax1 = plt.subplots(figsize=(3, 1))  # Smaller plot size
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct=lambda p: f'{p:.1f}%', startangle=150,
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']],
          textprops={'fontsize': 5})  # Adjust label font size here
