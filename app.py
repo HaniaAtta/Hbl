@@ -21,7 +21,9 @@ fig1, ax1 = plt.subplots(figsize=(8, 6))
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140)
 ax1.set_title('Distribution of Account Types')
 st.pyplot(fig1)
-
+st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
+         "It shows the proportion of each account type, helping to identify which types are most common. "
+         "For instance, if one account type dominates, it may indicate a specific customer preference or business focus.")
 # Task 2: Transaction Flow by Beneficiary Bank
 st.subheader("Task 2: Top 5 Beneficiary Banks with Highest Credit Transactions by Region")
 top_banks = data.groupby(['Region', 'Transaction To'])['Credit'].sum().reset_index()
@@ -68,6 +70,7 @@ ax5.legend(title='Transaction Type')
 st.pyplot(fig5)
 
 # Task 6: Transaction Trends Over Time
+st.subheader("Task 6:Time-Based Analysis (if applicable)")
 if 'Time' in data.columns:
     st.subheader("Task 6: Transaction Trends Over Time")
     data['Time'] = pd.to_datetime(data['Time'])
