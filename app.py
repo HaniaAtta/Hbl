@@ -97,9 +97,7 @@ if 'Time' in data.columns:
         st.write("No valid time data found in the dataset.")
 else:
     st.write("The 'Time' column is not available in the dataset.")
-st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.
-
-")
+st.write("**Explanation:** This line plot is intended to illustrate the trends of credit and debit transactions over time, allowing for the identification of patterns, seasonal effects, or anomalies in transaction behavior. However, since the dataset does not contain a 'Time' column, the analysis could not be performed, and thus no time-based trends are displayed. This absence of time data limits the ability to forecast future transactions based on historical data.")
 # Task 7: Total Credit and Debit Amounts by Account Type
 st.subheader("Task 7: Total Credit and Debit Amounts by Account Type")
 customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().reset_index()
