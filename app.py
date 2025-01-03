@@ -21,6 +21,9 @@ st.markdown(
     .sidebar .sidebar-content {
         background: #e8d8c4;  /* Milk-like color for sidebar */
     }
+    h1, h2, h3 {
+        text-align: center;  /* Center headers */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -39,6 +42,11 @@ colors = {
     'dark_slate': '#1B2735'
 }
 
+# Function to set plot background color
+def set_plot_background(ax):
+    ax.set_facecolor(colors['light_beige'])  # Set plot background color
+    ax.grid(True, linestyle='--', alpha=0.5)  # Add grid lines
+
 # Task 1: Account Type Distribution
 st.subheader("Task 1: Distribution of Account Types")
 account_type_counts = data['Account Type'].value_counts()
@@ -46,6 +54,7 @@ fig1, ax1 = plt.subplots(figsize=(8, 6))
 ax1.pie(account_type_counts, labels=account_type_counts.index, autopct='%1.1f%%', startangle=140, 
          colors=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax1.set_title('Distribution of Account Types')
+set_plot_background(ax1)  # Set background color for the plot
 st.pyplot(fig1)
 st.write("**Explanation:** This pie chart illustrates the distribution of different account types in the dataset. "
          "It shows the proportion of each account type, helping to identify which types are most common. "
@@ -60,6 +69,7 @@ sns.barplot(data=top_banks, x='Transaction To', y='Credit', hue='Region', ax=ax2
             palette=[colors['dark_blue'], colors['slate_blue'], colors['light_beige'], colors['dark_slate']])
 ax2.set_title('Top 5 Beneficiary Banks with Highest Credit Transactions by Region')
 ax2.set_xticklabels(ax2.get_xticklabels(), rotation=45)
+set_plot_background(ax2)  # Set background color for the plot
 st.pyplot(fig2)
 st.write("**Explanation:** This bar chart displays the top 5 beneficiary banks with the highest credit transactions for each region. "
 "It provides insights into regional banking preferences and highlights which banks are most frequently used for credit transactions.")
@@ -70,9 +80,9 @@ transaction_intensity = data.groupby('Region')[['Credit', 'Debit']].sum().reset_
 fig3, ax3 = plt.subplots(figsize=(10, 6))
 sns.heatmap(transaction_intensity.set_index('Region'), annot=True, cmap='YlGnBu', fmt='.0f', ax=ax3)
 ax3.set_title('Transaction Intensity by Region')
+set_plot_background(ax3)  # Set background color for the plot
 st.pyplot(fig3)
-st.write("**Explanation:** This heatmap visualizes the intensity of credit and debit transactions by region. "
-"The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
+st.write("**Explanation:** This heatmap visual izes the intensity of credit and debit transactions by region. The annotations provide exact transaction amounts, allowing for quick identification of regions with high transaction volumes. This can help in understanding regional economic activity.")
 
 # Task 4: Anomalies in Transactions
 st.subheader("Task 4: Anomalies in Credit Transactions")
@@ -86,6 +96,7 @@ ax4.set_title('Anomalies in Credit Transactions')
 ax4.set_xlabel('Index')
 ax4.set_ylabel('Credit Amount')
 ax4.legend()
+set_plot_background(ax4)  # Set background color for the plot
 st.pyplot(fig4)
 st.write("**Explanation:** This scatter plot identifies anomalies in credit transactions by highlighting outliers in red. Outliers can indicate unusual transaction behavior, which may warrant further investigation for fraud detection or error correction.")
 
@@ -100,6 +111,7 @@ ax5.set_title('Comparative Analysis of Credit and Debit Transactions by Account 
 ax5.set_xlabel('Account Type')
 ax5.set_ylabel('Transaction Amount')
 ax5.legend(title='Transaction Type')
+set_plot_background(ax5)  # Set background color for the plot
 st.pyplot(fig5)
 st.write("**Explanation:** This box plot compares the distribution of credit and debit transactions across different account types. It highlights the median, quartiles, and potential outliers, providing insights into the transaction behavior of various account types.")
 
@@ -120,6 +132,7 @@ if 'Time' in data.columns:
             ax6.set_xlabel("Time")
             ax6.set_ylabel("Transaction Amount")
             ax6.legend()
+            set_plot_background(ax6)  # Set background color for the plot
             st.pyplot(fig6)
         else:
             st.write("Time series data is empty after processing.")
@@ -136,10 +149,11 @@ customer_transactions = data.groupby('Account Type')[['Credit', 'Debit']].sum().
 fig7, ax7 = plt.subplots(figsize=(10, 6))
 customer_transactions.set_index('Account Type').plot(kind='bar', stacked=True, ax=ax7, color=[colors['dark_blue'], colors['slate_blue']])
 ax7.set_title('Total Credit and Debit Amounts by Account Type')
-ax7.set_xlabel('Account Type')
+ax7.set_xlabel('Account Type ')
 ax7.set_ylabel('Transaction Amount')
 ax7.legend(title='Transaction Type')
+set_plot_background(ax7)  # Set background color for the plot
 st.pyplot(fig7)
 st.write("**Explanation:** This stacked bar chart visualizes the total credit and debit amounts for each account type. "
          "It provides a clear comparison of how different account types contribute to overall transaction volumes. "
-         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.") ⬤
+         "These insights can guide strategic decisions, such as tailoring services to high-transaction account types or addressing gaps in others.")
